@@ -26,23 +26,37 @@ colnames(stationData) <- c("Date", "Daily")
 # convert column one to date format
 stationData[ , 1] <- as.Date(stationData[, 1], format = "%d-%b-%Y")
 
-# convert column 2 to inches of rain
-# Data are the number of tips of the rain gage bucket. 
+# convert # of tips to inches of rain
+# Data are the number of tips of the rain gauge bucket. 
 # Each tip is 0.01 inches of rainfall.
 stationData[ , 2] <- as.numeric(stationData[ ,2]) * .01
 
 # create a column containing n-day running average
 nDays <- 5
 
-giveMeFiveAvg <- function(lastOfFiveDays) {
-  return(mean(stationData[stationData$Date %in% seq(lastOfFiveDays-nDays+1, by = "day", length.out = 5),"Daily"]))
+# %in% covered in https://www.linkedin.com/learning/r-for-data-science-lunchbreak-lessons/sets-equal-and-in
+giveRunningMean <- function(lastDayOfAverage) {
+  return(mean(stationData[stationData$Date %in% seq(lastDayOfAverage-nDays+1, by = "day", length.out = 5),"Daily"]))
 }
 
-stationData$RunningAverage <- lapply(stationData$Date,giveMeFiveAvg)
+# as seen in https://www.linkedin.com/learning/r-for-data-science-lunchbreak-lessons/apply-and-lapply
+stationData$RunningAverage <- lapply(stationData$Date,giveRunningMean)
 
 # Plot the data -----------------------------------------------------------
 
-# plot previous years - weekly sum, year over year. bars
+# plot previous years - weekly sum, year over year.
+
+# need to know what week each day belongs to
+# as covered in https://www.linkedin.com/learning/r-programming-in-data-science-dates-and-times/create-sequences-of-dates-cut-dates-and-round-dates
+stationData$weekOf <- cut.Date(stationData$Date, 
+                               breaks = "week", 
+                               start.on.monday = FALSE)
+
+# or a simpler solution with week of year
+stationData$weekOfYear <- strftime(stationData$Date, format = "%W")
+
+boxplot()
+
 # plot this year to date - weekly, as a green line
 # draw a red line at 1.5 inches per week
 
