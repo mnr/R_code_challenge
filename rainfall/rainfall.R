@@ -1,6 +1,6 @@
-# oregon water readings: https://or.water.usgs.gov/non-usgs/bes/
 
 # Obtain data -------------------------------------------------------------
+# oregon water readings: https://or.water.usgs.gov/non-usgs/bes/
 
 # which data table should we use?
 stationNumber <- 171 # Sunnyside School Rain Gage
@@ -21,7 +21,7 @@ stationData <- read.table(file = paste0(rainfall_baseURL,stationName),
 stationData <- stationData[ , c(1,2)]
 
 # clean up the row names
-colnames(stationData) <- c("Date", "Daily")
+colnames(stationData) <- c("Date", "DailyRain")
 
 # convert column one to date format
 stationData[ , 1] <- as.Date(stationData[, 1], format = "%d-%b-%Y")
@@ -31,35 +31,65 @@ stationData[ , 1] <- as.Date(stationData[, 1], format = "%d-%b-%Y")
 # Each tip is 0.01 inches of rainfall.
 stationData[ , 2] <- as.numeric(stationData[ ,2]) * .01
 
-# create a column containing n-day running average
-nDays <- 5
 
-# %in% covered in https://www.linkedin.com/learning/r-for-data-science-lunchbreak-lessons/sets-equal-and-in
-giveRunningMean <- function(lastDayOfAverage) {
-  return(mean(stationData[stationData$Date %in% seq(lastDayOfAverage-nDays+1, by = "day", length.out = 5),"Daily"]))
-}
+# calculations ------------------------------------------------------------
 
-# as seen in https://www.linkedin.com/learning/r-for-data-science-lunchbreak-lessons/apply-and-lapply
-stationData$RunningAverage <- lapply(stationData$Date,giveRunningMean)
+# What week of the year does this date fall into?
+stationData$weekOfYear <- strftime(stationData$Date, format = "%W")
+
+# What year does this sample belong to?
+stationData$yearOfSample <- strftime(stationData$Date, format = "%Y")
+
+# sum of rainfall for each year/week pair
+RainfallByWeek <- aggregate(stationData$DailyRain,
+                                  by = list(stationData$weekOfYear, stationData$yearOfSample),
+                                  FUN = sum, na.rm = TRUE)
+
+colnames(RainfallByWeek) <- c("weekNumber","Year","inches")
+
+# calculate average rainfall per week; historical and this year
+
+#avg rainfall per week historical
+CurrentYear <- format(Sys.Date(), "%Y")
+
+beforeThisYear <- RainfallByWeek[ RainfallByWeek$Year < CurrentYear, ]
+
+historical_WeeklyInchesOfRain <- aggregate(beforeThisYear$inches, 
+                                           by = list(beforeThisYear$weekNumber), 
+                                           FUN = mean, na.rm = TRUE)
+colnames(historical_WeeklyInchesOfRain) <- c("weekNumber","inches")
+
+# avg rainfall per week this year
+thisYear_WeeklyInchesOfRain <- RainfallByWeek[ RainfallByWeek$Year == CurrentYear, c("weekNumber","inches") ]
+
+# since we subset for one year, there will not be more than 1 week
+# ...so there isn't a need to aggregate
 
 # Plot the data -----------------------------------------------------------
 
-# plot previous years - weekly sum, year over year.
-
-# need to know what week each day belongs to
-# as covered in https://www.linkedin.com/learning/r-programming-in-data-science-dates-and-times/create-sequences-of-dates-cut-dates-and-round-dates
-stationData$weekOf <- cut.Date(stationData$Date, 
-                               breaks = "week", 
-                               start.on.monday = FALSE)
-
-# or a simpler solution with week of year
-stationData$weekOfYear <- strftime(stationData$Date, format = "%W")
-
-boxplot()
+# plot previous years - weekly average.
+plot(historical_WeeklyInchesOfRain, 
+     type = "l",
+     col = "green",
+     lwd = 3,
+     main = "Inches of Rain by Week of Year",
+     sub = paste("Station:",stationName),
+     xlab = "Week of year",
+     ylab = "Inches of rain",
+     ylim = c(0,max(historical_WeeklyInchesOfRain$inches,thisYear_WeeklyInchesOfRain$inches)))
 
 # plot this year to date - weekly, as a green line
-# draw a red line at 1.5 inches per week
+lines(thisYear_WeeklyInchesOfRain, lwd = 3, col = "orange")
 
+# draw a blue line at 1.5 inches per week
+abline(h = 1.5,  col = "blue")
+
+# Create a legend
+legend(x = "topright",
+       legend = c("Historical Rainfall", 
+                  paste("Rainfall for", CurrentYear),
+                  "1.5 inches"),
+       text.col = c("green", "orange", "blue"))
 
 # Act on the data ---------------------------------------------------------
 
