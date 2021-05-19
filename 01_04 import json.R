@@ -11,5 +11,5 @@ bullrunWater <- tryCatch(fromJSON(bullrunURL),
                          error = function(e) {message(paste("Error:", e))}
 )
 
-brw_data <- as.numeric(bullrunWater$value$timeSeries$values[[1]]$value[[1]]$value)
+brw_waterLevel <- as.numeric(bullrunWater$value$timeSeries$values[[1]]$value[[1]]$value)
 brw_time <- as.Date(bullrunWater$value$timeSeries$values[[1]]$value[[1]]$dateTime )
