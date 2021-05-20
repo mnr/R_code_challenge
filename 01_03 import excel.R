@@ -16,7 +16,7 @@ for (aword in encodeThisByWord) {
   codeString <- rbind(codeString,wordPosn)
 }
 
-
+# write the Excel file with two sheets
 # install.packages("writexl")
 library(writexl)
 
@@ -25,9 +25,20 @@ write_xlsx(list(words = as.data.frame(randomWords), secretCode = codeString),
            col_names = FALSE)
 
 
-# import xlsx -------------------------------------------------------------
+# get the secret code -------------------------------------------------------------
 
 library(readxl)
 
-Untitled_1 <- read_excel("C:/Users/mnr/Desktop/Untitled 1.xls",
-                         sheet = "Sheet1", col_names = FALSE)
+randomWords <- as.data.frame(read_excel("secretCode.xlsx", sheet = "words", col_names = FALSE))
+
+codeString <- as.data.frame(read_excel("secretCode.xlsx", sheet = "secretCode", col_names = FALSE))
+
+# a test of subsetting into randomWords
+randomWords[32,31] # = "enjoy"
+
+# here's the code to retrieve the secret words
+getWord <- function(x) {randomWords[x[1],x[2]]}
+
+apply(codeString, 1, getWord)
+
+  
