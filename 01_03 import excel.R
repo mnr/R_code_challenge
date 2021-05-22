@@ -2,11 +2,6 @@
 
 # see 02_01 for code to build the encoder
 
-# Build the code xlsx -----------------------------------------------------
-wordlist.10000 <- read.table("C:/Users/mnr/Desktop/wordlist.10000.txt")
-randomWords <- matrix(wordlist.10000$V1, nrow = 100)
-
-
 
 # get the secret code -------------------------------------------------------------
 
