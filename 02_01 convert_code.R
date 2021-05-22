@@ -1,3 +1,7 @@
+# Build the code xlsx -----------------------------------------------------
+wordlist.10000 <- read.table("C:/Users/mnr/Desktop/wordlist.10000.txt")
+randomWords <- matrix(wordlist.10000$V1, nrow = 100)
+
 # build the encode sheet
 encodeThis <- "Enjoy a sunny day at the beach"
 
