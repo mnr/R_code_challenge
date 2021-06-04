@@ -33,9 +33,6 @@ randomWords <- as.data.frame(read_excel("secretCode.xlsx", sheet = "words", col_
 
 codeString <- as.data.frame(read_excel("secretCode.xlsx", sheet = "secretCode", col_names = FALSE))
 
-# a test of subsetting into randomWords
-randomWords[32,31] # = "enjoy"
-
 # here's the code to retrieve the secret words
 getWord <- function(x) {randomWords[x[1],x[2]]}
 
