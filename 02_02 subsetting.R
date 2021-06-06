@@ -1,7 +1,16 @@
 # retrieve world population data
 source("01_02 try catch.R")
 
-# for this year, which countries have population densities > median
-unique(worldPop[ worldPop$Time == 2021 & 
-                   worldPop$PopDensity > median(worldPop$PopDensity),
-                 "Location" ])
+# for one selected year, 
+# ...which countries have population densities > median
+# Use the "Medium" variant
+# Return location and popDensity
+
+# what is the median population density?
+median(worldPop$PopDensity)
+
+# select those countries
+worldPop[ worldPop$Time == 2021 & 
+                   worldPop$PopDensity > median(worldPop$PopDensity) &
+                   worldPop$Variant == "Medium",
+                 c("Location", "PopDensity") ]
