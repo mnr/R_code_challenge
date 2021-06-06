@@ -7,13 +7,14 @@ firstNames <- read.table(file = "https://www.usna.edu/Users/cs/roche/courses/s15
 surveyID <- nrow(firstNames):((nrow(firstNames)*2)-1)
 
 # Income
-Income <- sample(x = c("Poverty","Low Middle","Middle","Upper Middle","Highest"),
-                 prob = c(.2,.09,.5, .12,.09),
-                 replace = TRUE,
-                 size = nrow(firstNames))
+# Income <- sample(x = c("Poverty","Low Middle","Middle","Upper Middle","Highest"),
+#                  prob = c(.2,.09,.5, .12,.09),
+#                  replace = TRUE,
+#                  size = nrow(firstNames))
+Income <- as.integer(rnorm(nrow(firstNames), mean = 68000, sd = 14500))
 
 # Color of House
-houseColor <- sample(c("Orange","Indigo","Violet","Yellow","Red","Blue","Green"),
+houseColor <- sample(c("Orange","Gray","Violet","Yellow","Red","Blue","Green"),
                      replace = TRUE,
                      prob = c(.1,.2,.4,.8,.4,.2,.1),
                      size = nrow(firstNames))
@@ -25,7 +26,7 @@ AcmeData_Demographic <-  allData[order(AcmeData_Demographic$firstName), c("first
 
 AcmeData_Survey <- allData[1:9000, c("surveyID", "Income", "houseColor")]
 
-StarResearch <- allData[9001:nrow(firstNames), ]
-names(StarResearch) <- c("Respondent","Identifier","Income","House")
+StarResearch <- allData[9001:nrow(firstNames), c(1,3,4)]
+names(StarResearch) <- c("Respondent","Income","House")
 
 save(AcmeData_Demographic,AcmeData_Survey,StarResearch, file="SurveyData.rds")

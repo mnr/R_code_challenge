@@ -7,17 +7,15 @@ acmeData <- merge(x = AcmeData_Demographic,
                   y = AcmeData_Survey,
                   by = "surveyID")
 
+acmeData$surveyID <- NULL # remove surveyID column
+
 # Rename Star Research
-names(StarResearch) <- c("firstName","surveyID","Income","houseColor")
-StarResearch_shuffled <- StarResearch[ , names(acmeData)]
+names(StarResearch) <- c("firstName","Income","houseColor")
 
 # combine Acme & Star
-allTheData <- rbind(acmeData, StarResearch_shuffled)
+allTheData <- rbind(acmeData, StarResearch)
 
 # brief report
+allTheData$houseColor <- factor(allTheData$houseColor)
 
-# Reorder income names
-allTheData$Income <-  factor(allTheData$Income, levels = c("Poverty","Low Middle","Middle","Upper Middle","Highest"))
-
-table(allTheData$Income, allTheData$houseColor)
-
+plot(x = allTheData$houseColor, y = allTheData$Income)
