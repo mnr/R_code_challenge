@@ -10,7 +10,7 @@ source("01_02 try catch.R")
 median(worldPop$PopDensity)
 
 # select those countries
-worldPop[ worldPop$Time == 2021 & 
+finalData <- worldPop[ worldPop$Time == 2021 & 
                    worldPop$PopDensity > median(worldPop$PopDensity) &
                    worldPop$Variant == "Medium",
                  c("Location", "PopDensity") ]
