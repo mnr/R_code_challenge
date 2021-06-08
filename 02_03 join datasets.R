@@ -7,10 +7,9 @@ acmeData <- merge(x = AcmeData_Demographic,
                   y = AcmeData_Survey,
                   by = "surveyID")
 
-acmeData$surveyID <- NULL # remove surveyID column
-
-# Rename Star Research
-names(StarResearch) <- c("firstName","Income","houseColor")
+# map Star Research columns to acmeData
+names(StarResearch) <- c("firstName", "surveyID","Income","houseColor")
+StarResearch <- StarResearch[ , names(acmeData)]
 
 # combine Acme & Star
 allTheData <- rbind(acmeData, StarResearch)
