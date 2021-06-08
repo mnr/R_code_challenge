@@ -10,6 +10,12 @@ library(fun)
 Top10000Passwords <- read.table(file = "https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/10-million-password-list-top-10000.txt")
 Top10000Passwords <- Top10000Passwords$V1
 
+badWords <- read.csv(file = "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/en")
+badWords <- badWords$X2g1c
+badWords <- c(badWords,"shitface")
+
+Top10000Passwords <- Top10000Passwords[!  Top10000Passwords %in% badWords]
+
 surveyID <- NULL
 for (passwordIndex in 1:lengthOfFirstNames) {
   if (rnorm(1) > 2) {
@@ -59,3 +65,4 @@ StarResearch <- allData[9001:lengthOfFirstNames, ]
 names(StarResearch) <- c("Respondent","Identifier","Income","House")
 
 save(AcmeData_Demographic,AcmeData_Survey,StarResearch, file="SurveyData.rds")
+
