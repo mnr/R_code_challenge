@@ -6,9 +6,6 @@ source("01_02 try catch.R")
 # Use the "Medium" variant
 # Return location and popDensity
 
-# what is the median population density?
-median(worldPop$PopDensity)
-
 # select those countries
 finalData <- worldPop[ worldPop$Time == 2021 & 
                    worldPop$PopDensity > median(worldPop$PopDensity) &
