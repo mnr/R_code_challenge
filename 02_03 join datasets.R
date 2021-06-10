@@ -8,13 +8,15 @@ acmeData <- merge(x = AcmeData_Demographic,
                   by = "surveyID")
 
 # map Star Research columns to acmeData
-names(StarResearch) <- c("firstName", "surveyID","Income","houseColor")
+names(StarResearch) <- c("firstName", "surveyID","Income","houseColor","Age")
 StarResearch <- StarResearch[ , names(acmeData)]
 
 # combine Acme & Star
 allTheData <- rbind(acmeData, StarResearch)
 
 # brief report
-allTheData$houseColor <- factor(allTheData$houseColor)
+plot(x = allTheData$Age, y = allTheData$Income, col = allTheData$houseColor)
 
+allTheData$houseColor <- factor(allTheData$houseColor)
 plot(x = allTheData$houseColor, y = allTheData$Income)
+
