@@ -17,9 +17,9 @@ todayDate <- as.POSIXlt(Sys.time()) # each planet
 
 # this function uses planet data to convert earth date to planet date
 eachPlanetsDate <- function(thisPlanet) {
-  planetYear <- as.integer(todayDate$year * as.numeric(thisPlanet["lengthOfYear"])) + 1900
+  planetYear <- as.integer(todayDate$year / as.numeric(thisPlanet["lengthOfYear"])) + 1900
   earthDays <- todayDate$yday+((todayDate$hour*60)+(todayDate$min))/(24*60*60)
-  planetDays <- earthDays * as.numeric(thisPlanet["lengthOfDay"])
+  planetDays <- earthDays / as.numeric(thisPlanet["lengthOfDay"])
   paste("Year:",planetYear, "yday:",round(planetDays, 2))
 }
 
