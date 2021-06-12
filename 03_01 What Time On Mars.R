@@ -1,4 +1,5 @@
 # What time is it on Mars?
+# https://www.giss.nasa.gov/tools/mars24/help/index.html
 
 planets <- c("Mercury", "Venus", "Earth",
              "Mars", "Jupiter", "Saturn", 
@@ -13,14 +14,16 @@ lengthOfDay <- c(58.6, 243, 1,
 YearDayPlanet <- data.frame(planets,lengthOfYear,lengthOfDay)
 # YearDayPlanet now contains information about each planet
 
-todayDate <- as.POSIXlt(Sys.time()) # each planet
+todayDate <- as.POSIXlt(Sys.time()) # earth time
 
 # this function uses planet data to convert earth date to planet date
 eachPlanetsDate <- function(thisPlanet) {
   planetYear <- as.integer(todayDate$year / as.numeric(thisPlanet["lengthOfYear"])) + 1900
-  earthDays <- todayDate$yday+((todayDate$hour*60)+(todayDate$min))/(24*60*60)
-  planetDays <- earthDays / as.numeric(thisPlanet["lengthOfDay"])
-  paste("Year:",planetYear, "yday:",round(planetDays, 2))
+  planetDays <- as.integer(todayDate$yday / as.numeric(thisPlanet["lengthOfDay"]))
+  earthTime <- todayDate$hour + (todayDate$min / 60)
+  lengthOfPlanetDayInHours <- as.numeric(thisPlanet["lengthOfDay"]) * 24
+  percentOfPlanetDay <- round((earthTime / lengthOfPlanetDayInHours) * 100, 1)
+  paste("Year:",planetYear, " - yday:",planetDays," - day:",percentOfPlanetDay,"%")
 }
 
 # apply steps through each row and returns the planet date
