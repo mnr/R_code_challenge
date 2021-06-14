@@ -86,5 +86,34 @@ AcmeData_Survey <- allData[1:9000, c("surveyID", "Income", "houseColor", "Age")]
 StarResearch <- allData[9001:lengthOfFirstNames, ]
 names(StarResearch) <- c("Respondent","Identifier","Income","House","age")
 
-save(AcmeData_Demographic,AcmeData_Survey,StarResearch, file="SurveyData.rds")
+# world population data sets ------------------------------
+worldPopURLBase <- "https://population.un.org/wpp/Download/Files/1_Indicators%20(Standard)/CSV_FILES/"
+worldPopFile <- "WPP2019_TotalPopulationBySex.csv"
+worldPopURL <- paste0(worldPopURLBase, worldPopFile)
+worldPopColClasses <- c("integer","character","integer", "factor", "integer", "numeric","numeric","numeric","numeric","numeric") 
+
+worldPop <- tryCatch(read.csv(worldPopURL,colClasses = worldPopColClasses ),
+                     error = function(e) {
+                       message(paste("The error is:", e))
+                       read.csv(worldPopFile,colClasses = worldPopColClasses )
+                     }
+)
+
+
+# get metada about the worldpop database
+download.file(url = "https://population.un.org/wpp/Download/Files/4_Metadata/WPP2019_F01_LOCATIONS.XLSX",
+              destfile = "wppMetaData.xlsx")
+worldPopMeta <- as.data.frame(read_excel("WPP2019_F01_LOCATIONS.XLSX",
+                                         sheet = "Location"))
+worldPopMeta <- worldPopMeta[ worldPopMeta$...7 %in% "Country/Area", "...2"]
+
+worldPopSubSet <- worldPop[ worldPop$Time == 2021 & 
+                         worldPop$Variant == "Medium" &
+                         worldPop$Location %in% worldPopMeta,
+                       c("Location", "PopTotal","PopDensity") ]
+
+# save to rds ------------------------
+
+save(AcmeData_Demographic,AcmeData_Survey,StarResearch,
+     worldPop, worldPopSubSet, file="RCodeChallenge.rds")
 

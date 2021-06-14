@@ -1,8 +1,5 @@
 # import an excel file
 
-# see 02_01 for code to build the encoder
-
-
 # get the secret code -------------------------------------------------------------
 
 library(readxl)

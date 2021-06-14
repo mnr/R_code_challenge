@@ -8,7 +8,7 @@
 # ...all digits in code are unique
 # ...different than all preceding door codes
 
-tryCatch(load(file="previousDoorCodes.rds"),
+tryCatch(load(file="03_03 previousDoorCodes.rds"),
          error = {previousDoorCodes <- NULL}
 )
 
@@ -28,5 +28,5 @@ while (length(unique(candidate_split)) != 6) {
 print(paste("Succeed:", candidate_sixdigits))
 
 previousDoorCodes <- c(previousDoorCodes,candidate_sixdigits)
-save(previousDoorCodes, file = "previousDoorCodes.rds")
+save(previousDoorCodes, file = "03_03 previousDoorCodes.rds")
 

@@ -1,7 +1,7 @@
 # clustering
 
 # load survey data
-load(file = "SurveyData.rds")
+load(file = "RCodeChallenge.rds")
 
 clusterThis <- StarResearch[ , c("Income","age")]
 

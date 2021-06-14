@@ -12,7 +12,7 @@
 # at least one punctuation character
 
 # load survey data
-load(file = "SurveyData.rds")
+load(file = "RCodeChallenge.rds")
 
 # Environment now has three files
 # note that surveyID and Identifier look like valid passwords

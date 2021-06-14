@@ -1,6 +1,6 @@
 
 # load survey data
-load(file = "SurveyData.rds")
+load(file = "RCodeChallenge.rds")
 
 # combine Acme Data
 acmeData <- merge(x = AcmeData_Demographic,

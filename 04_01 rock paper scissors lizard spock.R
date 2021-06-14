@@ -28,6 +28,7 @@ rpslsWinners <- matrix(c(rockWins,paperWins,scissorsWins,lizardWins,spockWins),
 
 # play the game ------------
 whoWon <- c(computer = 0, user = 0)
+barplot(whoWon) # place plot in view
 
 while (TRUE) {
   computerChoice <- sample(rpslsNames, 1)
