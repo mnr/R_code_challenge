@@ -1,6 +1,7 @@
-# import CSV
+# Challenge: Import a remote database
+# Difficulty: 1
 
-# Challenge: import the United Nations world population database
+# import the United Nations world population database
 # all fields should be integer or numeric
 # except variant = factor, location = character
 

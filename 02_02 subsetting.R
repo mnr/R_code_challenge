@@ -1,3 +1,6 @@
+# Challenge: Use R's subsetting operators to trim out unnecessary data
+# Difficulty: 1
+
 # retrieve world population data
 load(file = "RCodeChallenge.rds")
 

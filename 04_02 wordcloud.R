@@ -1,9 +1,8 @@
-# wordcloud
+# Challenge: Display world population to population density with a word cloud
+# Difficulty: 3
 
 # install.packages("wordcloud")
 library(wordcloud)
-library(readxl)
-
 
 # get world population data and list of countries ----------------
 load(file = "RCodeChallenge.rds")

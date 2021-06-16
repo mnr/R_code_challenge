@@ -1,4 +1,5 @@
-# use SQL with R
+# Challenge: Use SQL to generate a report on R data
+# Difficulty: 3
 
 # apply an SQL statement against an R data.frame
 # use worldPop

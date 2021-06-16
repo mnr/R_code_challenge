@@ -1,4 +1,5 @@
-# rewrite the SQL challenge using tidyverse syntax
+# Challenge: Use Tidyverse syntax to rewrite the SQL challenge
+# Difficulty: 4
 
 # use worldPop
 # determine the Male and Female population as % of total population
