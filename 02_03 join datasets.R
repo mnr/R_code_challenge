@@ -19,6 +19,7 @@ allTheData <- rbind(acmeData, StarResearch)
 # brief report
 plot(x = allTheData$Age, y = allTheData$Income, col = allTheData$houseColor)
 
+# extra credit - box plot
 allTheData$houseColor <- factor(allTheData$houseColor)
 plot(x = allTheData$houseColor, y = allTheData$Income)
 

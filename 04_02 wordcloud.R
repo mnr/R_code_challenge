@@ -7,10 +7,11 @@ library(wordcloud)
 # get world population data and list of countries ----------------
 load(file = "RCodeChallenge.rds")
 
+# sort by population density
+worldPopSubSet <- worldPopSubSet[order(worldPopSubSet$PopDensity, decreasing = TRUE), ]
+
 # assign colors (red to blue) Red = large pop density
 myColors <- colorRampPalette(c("Red","Blue"))
-
-worldPopSubSet <- worldPopSubSet[order(worldPopSubSet$PopDensity, decreasing = TRUE), ]
 
 worldPopSubSet$thisRowColor <- myColors(nrow(worldPopSubSet))
 

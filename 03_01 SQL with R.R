@@ -13,7 +13,7 @@ library(sqldf)
 
 load("RCodeChallenge.rds")
 
-doThisSQL <- c("select Location,
+doThisSQL <- "select Location,
                      round(PopMale/PopTotal*100) as Male_Percent,
                      round(PopFemale/PopTotal*100) as Female_Percent 
                from worldPop
@@ -21,6 +21,6 @@ doThisSQL <- c("select Location,
                and Time = 2020
                and PopMale IS NOT NULL
                and PopFemale IS NOT NULL
-               order by Female_Percent")
+               order by Female_Percent"
 
 resultSQLDF <- sqldf(doThisSQL)

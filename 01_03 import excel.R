@@ -1,5 +1,5 @@
 # Challenge: Import two pages from an Excel spreadsheet and decode a message
-# Difficulty: 2
+# Difficulty: 3
 
 # Import two pages from a "secretCode.xlsx"
 # Page one is a list of words
