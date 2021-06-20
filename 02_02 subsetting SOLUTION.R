@@ -2,7 +2,7 @@
 # Difficulty: 1
 
 # retrieve world population data
-load(file = "RCodeChallenge.rds")
+load(file = "RCodeChallenge.rda")
 
 # for one selected year, 
 # ...which countries have population densities > median

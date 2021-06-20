@@ -2,7 +2,7 @@
 # Difficulty: 2
 
 # load survey data
-load(file = "RCodeChallenge.rds")
+load(file = "RCodeChallenge.rda")
 
 # combine Acme Data
 acmeData <- merge(x = AcmeData_Demographic,

@@ -115,5 +115,5 @@ worldPopSubSet <- worldPop[ worldPop$Time == 2021 &
 # save to rds ------------------------
 
 save(AcmeData_Demographic,AcmeData_Survey,StarResearch,
-     worldPop, worldPopSubSet, file="RCodeChallenge.rds")
+     worldPop, worldPopSubSet, file="RCodeChallenge.rda")
 

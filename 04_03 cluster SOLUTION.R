@@ -6,7 +6,7 @@
 # Show the clusters in a graph
 
 # load survey data
-load(file = "RCodeChallenge.rds")
+load(file = "RCodeChallenge.rda")
 
 clusterThis <- StarResearch[ , c("Income","age")]
 

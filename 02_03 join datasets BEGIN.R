@@ -2,4 +2,4 @@
 # Difficulty: 2
 
 # load survey data
-load(file = "RCodeChallenge.rds")
+load(file = "RCodeChallenge.rda")

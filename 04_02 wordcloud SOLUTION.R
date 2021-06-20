@@ -5,7 +5,7 @@
 library(wordcloud)
 
 # get world population data and list of countries ----------------
-load(file = "RCodeChallenge.rds")
+load(file = "RCodeChallenge.rda")
 
 # sort by population density
 worldPopSubSet <- worldPopSubSet[order(worldPopSubSet$PopDensity, decreasing = TRUE), ]
