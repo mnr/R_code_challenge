@@ -1,7 +1,7 @@
 # Challenge: restore missing data in the World Population Database
 # Difficulty: 3
 
-load("RCodeChallenge.rds")
+load("RCodeChallenge.rda")
 
 # how many rows aren't complete
 sum(!complete.cases(worldPop))

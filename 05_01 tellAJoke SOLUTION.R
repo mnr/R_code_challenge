@@ -24,7 +24,7 @@ while(askYesNo(msg = "Do you want to read a joke?")) {
   cat("\014")
   say(what = aJoke["setup"], by = "random")
   
-  if (askYesNo(msg = "Do you want to know?")) {
+  if (askYesNo(msg = "Do you want to know the answer?")) {
     cat("\014")
     say(what = aJoke["punchline"], by="random")
   } else {

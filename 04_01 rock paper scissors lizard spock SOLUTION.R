@@ -30,7 +30,7 @@ rpslsWinners <- matrix(c(rockWins,paperWins,scissorsWins,lizardWins,spockWins),
                        byrow = TRUE)
 
 # play the game ------------
-whoWon <- c(computer = 0, user = 0)
+whoWon <- c(Computer = 0, You = 0)
 barplot(whoWon) # place plot in view
 
 while (TRUE) {
@@ -47,10 +47,10 @@ while (TRUE) {
   } else {
     if (rpslsWinners[computerChoice, userChoice]) {
       print("Computer wins!")
-      whoWon["computer"] <- whoWon["computer"] + 1
+      whoWon["Computer"] <- whoWon["Computer"] + 1
     } else
       print ("You win!")
-    whoWon["user"] <- whoWon["user"] + 1
+    whoWon["You"] <- whoWon["You"] + 1
     
   }
   barplot(whoWon)
