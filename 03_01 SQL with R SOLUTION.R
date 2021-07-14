@@ -11,7 +11,7 @@
 # install.packages("sqldf")
 library(sqldf)
 
-load("RCodeChallenge.rds")
+load("RCodeChallenge.rda")
 
 doThisSQL <- "select Location,
                      round(PopMale/PopTotal*100) as Male_Percent,

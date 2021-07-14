@@ -10,10 +10,11 @@
 # the URL to use is
 # "https://population.un.org/wpp/Download/Files/1_Indicators%20(Standard)/CSV_FILES/WPP2019_TotalPopulationBySex.csv"
 
-worldPopURLBase <- "https://population.un.org/wpp/Download/Files/1_Indicators%20(Standard)/CSV_FILES/"
+worldPopURL <- "https://population.un.org/wpp/Download/Files/1_Indicators%20(Standard)/CSV_FILES/WPP2019_TotalPopulationBySex.csv"
 worldPopFile <- "worldPopulation.csv"
-worldPopURL <- paste0(worldPopURLBase, worldPopFile)
-worldPopColClasses <- c("integer","character","integer", "factor", "integer", "numeric","numeric","numeric","numeric","numeric") 
+worldPopColClasses <- c("integer","character","integer", 
+                        "factor", "integer", "numeric",
+                        "numeric","numeric","numeric","numeric") 
 
 worldPop <- tryCatch(read.csv(worldPopURL,colClasses = worldPopColClasses ),
                      error = function(e) {

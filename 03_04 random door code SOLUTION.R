@@ -10,10 +10,11 @@
 # ...different than all preceding door codes
 
 # Valid: 591230, 690213
-# Invalid: 010101 ("0" and "1" repeat). 691345 ("13" isn't a month. "45" isn't a valid day of month)
+# Invalid: 010101 ("0" and "1" repeat). 
+# Invalid: 691345 ("13" isn't a month. "45" isn't a valid day of month)
 
 
-tryCatch(load(file="03_03 previousDoorCodes.rds"),
+tryCatch(load(file="03_03 previousDoorCodes.rda"),
          error = {previousDoorCodes <- NULL}
 )
 
@@ -33,5 +34,5 @@ while (length(unique(candidate_split)) != 6) {
 print(paste("Succeed:", candidate_sixdigits))
 
 previousDoorCodes <- c(previousDoorCodes,candidate_sixdigits)
-save(previousDoorCodes, file = "03_03 previousDoorCodes.rds")
+save(previousDoorCodes, file = "03_03 previousDoorCodes.rda")
 

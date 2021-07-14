@@ -8,7 +8,8 @@ library(wordcloud)
 load(file = "RCodeChallenge.rda")
 
 # sort by population density
-worldPopSubSet <- worldPopSubSet[order(worldPopSubSet$PopDensity, decreasing = TRUE), ]
+worldPopSubSet <- worldPopSubSet[order(worldPopSubSet$PopDensity, 
+                                       decreasing = TRUE), ]
 
 # assign colors (red to blue) Red = large pop density
 myColors <- colorRampPalette(c("Red","Blue"))

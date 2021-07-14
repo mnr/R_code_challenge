@@ -7,7 +7,7 @@
 # and remove missing data
 # sort by the female percentage
 
-load("RCodeChallenge.rds")
+load("RCodeChallenge.rda")
 
 # install.packages("tidyverse")
 library(tidyverse)

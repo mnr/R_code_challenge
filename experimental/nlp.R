@@ -1,6 +1,6 @@
 # natural language processing
 
-load("RCodeChallenge.rds")
+load("RCodeChallenge.rda")
 
 # install.packages("tm")
 library(tm)
