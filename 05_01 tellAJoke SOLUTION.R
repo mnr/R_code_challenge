@@ -5,6 +5,9 @@
 # use cowsay to display the joke
 # use R built-in interface tools
 
+#install.packages("curl")
+library(curl)
+
 #install.packages("cowsay")
 library(cowsay)
 
@@ -12,6 +15,7 @@ library(cowsay)
 library(jsonlite)
 
 jokeURL <- "https://official-joke-api.appspot.com/jokes/programming/random"
+jokeURL <- "https://karljoke.herokuapp.com/jokes/programming/random"
 
 while(askYesNo(msg = "Do you want to read a joke?")) {
   aJoke <- tryCatch(
