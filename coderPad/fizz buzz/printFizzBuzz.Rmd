@@ -1,0 +1,39 @@
+---
+title: "Untitled"
+author: "Mark Niemann-Ross"
+date: "2024-06-18"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r cars}
+fizzBuzz <- function(fizz = 7, buzz = 11) {
+  numbers <- 1:100
+  # ...because vectors can't mix types, and "fizz" is a character
+  returnThis <- as.character(numbers)
+  names(returnThis) <- numbers
+  
+  # fizz
+  whichFizz <- (numbers %% fizz) == 0
+  returnThis[whichFizz] <- "fizz"
+  
+  # buzz
+  whichBuzz <- (numbers %% buzz) == 0
+  returnThis[whichBuzz] <- "buzz"
+  
+  # fizzBuzz
+  fizzBuzz <- fizz*buzz
+  whichFB <- (numbers %% fizzBuzz) == 0
+  returnThis[whichFB] <- "fizzbuzz"
+  
+  return(returnThis)
+}
+
+fizzBuzz()
+```
+

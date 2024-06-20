@@ -1,0 +1,43 @@
+<h3>Recognize different types of elements</h3>
+<div><span></span>You’ll be given a list of unknown values.</div>
+<div>&nbsp;</div>
+<div><strong>Your task</strong>: Return a value according to the following rules:</div>
+<ul>
+  <li>The sum of any numbers in the list, each rounded up to the nearest integer...</li>
+  <li>plus… 1 if TRUE, 0 if FALSE ...</li>
+  <li>plus...The average length of all strings …</li>
+  <li>minus...The count of any empty strings.</li>
+  <li>Ignore anything else, including (but not limited to) NA</li>
+</ul>
+<h3><strong>Parameters</strong></h3>
+<p><code><strong>mysteryMeat</strong></code>: A list full of unexpected elements</p>
+<h3>Result</h3>
+<p><strong><code>return</code></strong>: A number based on the above rules</p>
+<h3><strong>Example 1:</strong></h3>
+<div>Input: <code>mysteryMeat &lt;- list("hello", 1, 3.14, TRUE, "")</code></div>
+<div>Result: <code>10</code></div>
+<div>Explanation:</div>
+<ul>
+  <li>sum of any numbers, each number rounded up = 1 + 4 = 5</li>
+  <li>TRUE = 1, FALSE = 0 = 1</li>
+  <li>average length of strings = 5</li>
+  <li>count of empty strings = 1</li>
+  <li>5 + 1 + 5 - 1</li>
+</ul>
+<div>&nbsp;</div>
+<div><strong>Example 2:</strong></div>
+<div>
+  <div>Input: <code>mysteryMeat &lt;- list(3, “mice”, “ran”, 2, FALSE, “alabama")</code></div>
+  <div>Result: <code>9.666667</code></div>
+</div>
+<div>
+  <div>Explanation:</div>
+  <ul>
+    <li>sum of any numbers, each number rounded up = 3 + 2 = 5</li>
+    <li>TRUE = 1, FALSE = 0 = 0</li>
+    <li>average length of strings = 4.66667</li>
+    <li>count of empty strings = 0</li>
+    <li>5 + 0 + 4.66667 + 0 = 9.66667</li>
+  </ul>
+</div>
+<div>&nbsp;</div>

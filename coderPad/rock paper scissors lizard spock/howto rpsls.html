@@ -1,0 +1,45 @@
+<h3>Play Rock, Paper, Scissors, Lizard, Spock in R</h3>
+<div><span>Rock. Paper. Scissors. Lizard? Spock? </span></div>
+<div>&nbsp;</div>
+<div><span>We've all played rock, paper, scissors. Did you know there's an extended version of the game? It's called rock, paper, scissors, lizard, Spock. The action isn't difficult. Two people compete. Each person counts to three then selects a gesture. The winner depends on this set of rules:</span></div>
+<ul>
+  <li><span>Scissors cuts paper. </span></li>
+  <li><span>Paper covers rock. </span></li>
+  <li><span>Rock crushes lizard. </span></li>
+  <li><span>Lizard poisons Spock. </span></li>
+  <li><span>Spock smashes scissors. </span></li>
+  <li><span>Scissors decapitate lizard. </span></li>
+  <li><span>Lizard eats paper. </span></li>
+  <li><span>Paper disproves Spock. </span></li>
+  <li><span>Spock vaporizes rock. </span></li>
+  <li><span>And rock crushes scissors.</span></li>
+</ul>
+<div><strong>Your task</strong>: Create a function to determine the winner for each round</div>
+<h3><strong>Parameters</strong></h3>
+<div><code><strong>player1 and player2</strong></code>: Each is a string (from the supplied vector titled <code>RocPapSciLizSpo</code>.)</div>
+<div><code>player1</code> is the choice from player #1.</div>
+<div><code>player2</code> is the choice from player #2.&nbsp;</div>
+<div>&nbsp;</div>
+<div><code>RocPapSciLisSpo</code> contains <code>c(“rock”, “paper”, “scissors”, “lizard”, “spock”)</code>. This vector is supplied for you. Use it to ensure your strings are correct.</div>
+<h3>Result</h3>
+<p>An integer: 1 or 2. Indicates the winner, either player one or player two. Zero if it is a tie</p>
+<h3><strong>Example 1:</strong></h3>
+<div>Input: <code>whoWon(player1 = “scissors”, player2 = ”paper”)</code></div>
+<div>Result: 1</div>
+<div>Explanation: Scissors cuts paper</div>
+<h3><strong>Example 2:</strong></h3>
+<div>
+  <div>Input: <code>whoWon(player1 = RocPapSciLizSpo[1], player2 = RocPapSciLizSpo[3])</code></div>
+  <div>Result: <code>1</code></div>
+  <div>Explanation: Rock crushes scissors</div>
+  <div>&nbsp;</div>
+  <div>
+    <h3><strong>Example 3:</strong></h3>
+    <div>
+      <div>Input: <code>whoWon(player1 = “scissors”, player2 = ”scissors”)</code></div>
+      <div>Result: <code>0</code></div>
+      <div>Explanation: It’s a tie</div>
+    </div>
+  </div>
+</div>
+<div>&nbsp;</div>

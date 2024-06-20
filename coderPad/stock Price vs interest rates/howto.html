@@ -1,0 +1,45 @@
+<h3><strong>Find the Correlation between Stock Price and Interest Rates</strong></h3>
+<div><span></span>I’ve supplied you with two data sets:</div>
+<ul>
+  <li>AAPL stock prices from June 6, 2019 to the current day, a data.frame titled <code>AAPL</code>
+    <ul>
+      <li>The AAPL data.frame contains these variables:
+        <ul>
+          <li>Date</li>
+          <li>Open</li>
+          <li>High</li>
+          <li>Low</li>
+          <li>Close</li>
+          <li>Adj.Close</li>
+          <li>Volume</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>US Interest Rates from July 1954 to the current day, a data.frame titled <code>interestRates</code>
+    <ul>
+      <li>The interestRates data.frame contains these variables:
+        <ul>
+          <li>date</li>
+          <li>value</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<div><strong>Your task</strong>: Return the correlation between the daily closing price (<code>AAPL$Close</code>) and the interest rate <code>interestRates$date</code> for a given range of dates.</div>
+<h3><strong>Parameters</strong></h3>
+<p><code>firstDate</code>: The first date of a range of dates as a string in YYYY-MM-DD format</p>
+<p><code>lastDate</code>: The last date of a range of dates as a string in YYYY-MM-DD format</p>
+<h3>Result</h3>
+<p><code>float</code>: The correlation between daily closing price and the daily interest rate. A number between 1 and -1.</p>
+<h3><strong>Example 1:</strong></h3>
+<div>Input: <code>firstDate = “2019-06-06”, lastDate = “2021-06-06"&nbsp;</code></div>
+<div>Result: <code>-0.7971276</code></div>
+<h3><strong>Example 2:</strong></h3>
+<div>
+  <div>Input: <code>firstDate = “2019-06-06”, lastDate = “2024-06-06"&nbsp;</code></div>
+  <div>Result: <code>0.4744185</code></div>
+</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
