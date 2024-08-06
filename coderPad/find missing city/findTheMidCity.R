@@ -73,7 +73,7 @@ startCity <- "New Cumberland city"
 endState <- "Pennsylvania"
 endCity <- "Cross Creek CDP"
 
-load(file = "coderpad/cityStateDist.rda")
+load(file = "coderPad/find missing city/cityStateDist.rda")
 resultCityList <- findTheMidCity(startState, startCity, endState, endCity, mileage) 
 
 identical(resultCityList,resultCityList)
