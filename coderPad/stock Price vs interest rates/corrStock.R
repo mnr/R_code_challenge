@@ -1,6 +1,6 @@
 # is there a correlation between stock price and interest rates
 
-load(file = "~/Downloads/AAPL_int.rda")
+load(file = "coderPad/stock Price vs interest rates/AAPL_int.rda")
 
 firstDate <- "2021-10-10"
 lastDate <- "2021-11-10"
